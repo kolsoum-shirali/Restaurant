@@ -1,0 +1,353 @@
+.navbar {
+  position: relative;
+  z-index: 200;
+  .hamburger-menu {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 201;
+
+    .menu {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      cursor: pointer;
+      transition: transform 0.5s;
+      -webkit-transition: transform 0.5s;
+      -moz-transition: transform 0.5s;
+      -ms-transition: transform 0.5s;
+      -o-transition: transform 0.5s;
+    }
+    div {
+      width: 100%;
+      height: 4px;
+      background-color: $color-primary;
+      transition: all 0.3s ease-in-out;
+      transform-origin: right;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+    }
+  }
+  &-navigation {
+    display: flex;
+    &-right {
+      width: 50%;
+      height: 100vh;
+      background-color: $color-black;
+      position: fixed;
+      top: 0;
+      right: -50%;
+      transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+      -webkit-transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+      -moz-transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+      -ms-transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+      -o-transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+      @include flexLayout;
+      ul {
+        li {
+          a {
+            text-align: center;
+            display: block;
+            margin: 20px;
+            text-decoration: none;
+            color: $color-primary;
+            font-size: 40px;
+            @include transitionStyle;
+            &:hover {
+              @include textStyle;
+            }
+          }
+        }
+      }
+    }
+    &-left {
+      width: 50%;
+      height: 100vh;
+      background-color: $color-dark;
+      position: fixed;
+      top: 0;
+      left: -50%;
+      transition: left 0.8s cubic-bezier(1, 0, 0, 1);
+      -webkit-transition: left 0.8s cubic-bezier(1, 0, 0, 1);
+      -moz-transition: left 0.8s cubic-bezier(1, 0, 0, 1);
+      -ms-transition: left 0.8s cubic-bezier(1, 0, 0, 1);
+      -o-transition: left 0.8s cubic-bezier(1, 0, 0, 1);
+      img {
+        opacity: 0.3;
+        width: 50%;
+        position: absolute;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        box-shadow: 0 20px 50px rgba($color-black, 0.5);
+        &:nth-child(1) {
+          top: 15%;
+          left: 15%;
+        }
+        &:nth-child(2) {
+          top: 35%;
+          left: 25%;
+        }
+        &:nth-child(3) {
+          top: 55%;
+          left: 35%;
+        }
+      }
+    }
+  }
+}
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-right {
+  right: 0;
+}
+.checkbox:checked ~ .navbar-navigation .navbar-navigation-left {
+  left: 0;
+}
+
+.checkbox:checked ~ .hamburger-menu .menu {
+  transform: rotateZ(90deg);
+  -webkit-transform: rotateZ(90deg);
+  -moz-transform: rotateZ(90deg);
+  -ms-transform: rotateZ(90deg);
+  -o-transform: rotateZ(90deg);
+}
+
+.checkbox:checked ~ .hamburger-menu div:nth-child(1) {
+  transform: rotateZ(-40deg);
+  -webkit-transform: rotateZ(-40deg);
+  -moz-transform: rotateZ(-40deg);
+  -ms-transform: rotateZ(-40deg);
+  -o-transform: rotateZ(-40deg);
+}
+.checkbox:checked ~ .hamburger-menu div:nth-child(2) {
+  opacity: 0;
+}
+.checkbox:checked ~ .hamburger-menu div:nth-child(3) {
+  transform: rotateZ(40deg);
+  -webkit-transform: rotateZ(40deg);
+  -moz-transform: rotateZ(40deg);
+  -ms-transform: rotateZ(40deg);
+  -o-transform: rotateZ(40deg);
+}
+.header {
+  background: linear-gradient(rgba($color-black, 0.9), rgba($color-black, 0.5)),
+    url("../images/bg.jpeg") center no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  @include flexLayout;
+
+  &-content {
+    &-brand {
+      @include flexLayout;
+
+      .title {
+        color: $color-secondary;
+        text-align: center;
+        line-height: 2;
+        padding: 10px 30px;
+        @include textStyle;
+        h1 {
+          font-size: 50px;
+        }
+      }
+
+      .header-logo {
+        @include flexLayout;
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+        background-color: transparent;
+        border: 3px solid $color-primary;
+        @include transitionStyle;
+        &:hover {
+          background-color: $color-primary;
+          svg {
+            color: $color-black;
+          }
+        }
+        svg {
+          color: $color-primary;
+          font-size: 45px;
+          @include transitionStyle;
+        }
+      }
+    }
+
+    .header-banner {
+      @include flexLayout(column);
+      line-height: 3;
+      h1:nth-child(1) {
+        color: $color-primary;
+        font-family: $font-Nastaliq;
+        font-weight: 100;
+        font-size: 80px;
+      }
+
+      h1:nth-child(2) {
+        color: $color-secondary;
+        font-size: 40px;
+      }
+      button {
+        padding: 10px 40px;
+        font-size: 20px;
+        font-weight: 900;
+        @include transitionStyle;
+        @extend %btnProperty;
+        &:hover {
+          background-color: $color-primary;
+          color: $color-black;
+        }
+      }
+    }
+  }
+}
+
+// about-us
+.about-us {
+  width: 100%;
+  padding: 78px 0;
+  .about-restaurant {
+    @include flexLayout;
+    .about-us-right {
+      flex: 0 0 calc(60% - 20px);
+      max-width: 60%;
+      .title {
+        text-align: center;
+        h1 {
+          font-family: $font-Nastaliq;
+          font-size: 70px;
+          color: $color-primary;
+        }
+        h2 {
+          color: $color-secondary;
+          font-size: 40px;
+          padding: 20px 0;
+        }
+        div.stars svg {
+          color: $color-primary;
+        }
+        p {
+          font-family: $font-Nastaliq;
+          font-size: 25px;
+          padding: 30px 0;
+          color: $color-secondary;
+          text-align: justify;
+          &::first-letter {
+            padding-right: 30px;
+          }
+        }
+        button {
+          @extend %btnProperty;
+          padding: 8px 30px;
+          font-size: 18px;
+          font-weight: 900;
+          margin: 20px 0;
+          @include transitionStyle;
+          &:hover {
+            background-color: $color-primary;
+            color: $color-black;
+          }
+        }
+      }
+    }
+    .about-us-left {
+      flex: 0 0 calc(40% - 20px);
+      max-width: 40%;
+      .about-img img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+// foods
+
+.foods {
+  width: 100%;
+  .title {
+    text-align: center;
+    font-size: 45px;
+    color: $color-white;
+    padding: 10px 0 40px 0;
+  }
+  .foods-wrapper {
+    @include flexLayout;
+    justify-content: space-between;
+    width: 100%;
+    .single-food {
+      position: relative;
+      flex: 0 0 calc(33.3333% - 10px);
+      max-width: calc(33.3333% - 10px);
+      height: 300px;
+      margin-top: 8px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      .img-description {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 100%;
+        opacity: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba($color-primary, 0.8);
+        @include transitionStyle;
+        @include flexLayout(column);
+        color: $color-white;
+        button {
+          padding: 7px 20px;
+          @extend %btnProperty;
+          background-color: $color-white;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+      &:hover .img-description {
+        opacity: 1;
+        right: 0;
+      }
+    }
+  }
+}
+
+// footer
+footer {
+  padding: 50px 0;
+  text-align: center;
+  h3 {
+    color: $color-white;
+    font-size: 20px;
+  }
+  ul {
+    @include flexLayout;
+    list-style: none;
+    li {
+      a {
+        font-size: 50px;
+        color: $color-white;
+        svg {
+          padding: 10px;
+          @include transitionStyle;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

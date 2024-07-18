@@ -1,0 +1,99 @@
+$color-dark: #262626;
+$color-black: black;
+$color-primary: #d3ab55;
+$color-secondary: #bbb;
+$color-white: #fff;
+$font-sahel: Sahel;
+$font-Nastaliq: Nastaliq;
+$font-nunito: "Nunito", sans-serif;
+
+@mixin flexLayout($direction: row) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin textStyle {
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+@mixin transitionStyle {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+%btnProperty {
+  color: $color-primary;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  outline: none;
+  border: 2px solid $color-primary;
+  font-family: $font-sahel;
+  background-color: transparent;
+}
+
+@font-face {
+  font-family: "vazir";
+  src: url("../fonts/vazir.eot") format("eot"),
+    url("../fonts/vazir.ttf") format("ttf"),
+    url("../fonts/vazir.woff") format("woff"),
+    url("../fonts/vazir.woff2") format("woff2");
+  font-weight: bolder;
+}
+
+@font-face {
+  font-family: Nastaliq;
+  src: url("../fonts/IranNastaliq.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: Sahel;
+  src: url("../fonts/Sahel.eot") format("eot"),
+    url("../fonts/Sahel.ttf") format("truetype"),
+    url("../fonts/Sahel.woff") format("woff"),
+    url("../fonts/Sahel.woff2") format("woff2");
+  font-weight: normal;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "vazir";
+  direction: rtl;
+  background-color: $color-dark;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none !important;
+}
