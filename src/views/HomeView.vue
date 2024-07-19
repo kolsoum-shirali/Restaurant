@@ -8,9 +8,6 @@ import FooterApp from '@/components/Home/FooterApp.vue'
 
 <template>
   <main>
-    <div class="preloader">
-      <img src="../assets/images/preloader.gif" alt="preloader.gif" />
-    </div>
     <NavBar />
     <HeaderApp />
     <AboutUs />
