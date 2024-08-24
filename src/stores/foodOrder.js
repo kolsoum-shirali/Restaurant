@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive,ref } from 'vue'
 import { defineStore } from 'pinia'
 import foods1 from '../assets/images/gallery-img-1.jpeg'
 import foods2 from '../assets/images/gallery-img-2.jpeg'
@@ -19,20 +19,23 @@ export const useFoodOrderStore = defineStore('foodOrder', () => {
     foodsList[index].number += 1
     addOrder(foodsList[index])
   }
-  const ordersList = reactive([])
+  const ordersList = ref([])
   function addOrder(order) {
-    if (ordersList.length) {
-      const result = ordersList.findIndex((item) => {
+    if (ordersList.value.length) {
+      const result = ordersList.value.findIndex((item) => {
         return item.id === order.id
       })
       if (result !== -1) {
-        ordersList[result] = order
+        ordersList.value[result] = order
       } else {
-        ordersList.push(order)
+        ordersList.value.push(order)
       }
     } else {
-      ordersList.push(order)
+      ordersList.value.push(order)
     }
   }
-  return { foodsList, ordersList, addOrder, addOrderNumber }
+  function $reset() {
+    ordersList.value = []
+  }
+  return { foodsList, ordersList, addOrder, addOrderNumber,$reset }
 })
